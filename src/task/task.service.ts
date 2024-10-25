@@ -1,4 +1,4 @@
-import { PrismaClient, Task, TaskPriority } from '@prisma/client';
+import { PrismaClient, TaskPriority } from '@prisma/client';
 import { CreateTaskDto, UpdateTaskDto } from './dto/task.request';
 import { OneTaskDto } from './dto/task.response';
 

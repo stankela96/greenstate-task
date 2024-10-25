@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { TaskService } from './task.service';
 import { CreateTaskDto, UpdateTaskDto } from './dto/task.request';
 import { CustomRequest } from '../middleware/types';
-import { Task, TaskPriority } from '@prisma/client';
+import { TaskPriority } from '@prisma/client';
 import { OneTaskDto } from './dto/task.response';
 
 export class TaskController {
@@ -13,6 +13,8 @@ export class TaskController {
 	 * /tasks:
 	 *   post:
 	 *     summary: Create a new task
+	 *     security:
+	 *       - BearerAuth: []
 	 *     tags: [Tasks]
 	 *     requestBody:
 	 *       required: true
@@ -45,6 +47,8 @@ export class TaskController {
 	 * /tasks:
 	 *   get:
 	 *     summary: Get all tasks
+	 *     security:
+	 *       - BearerAuth: []
 	 *     tags: [Tasks]
 	 *     parameters:
 	 *       - in: query
@@ -73,6 +77,8 @@ export class TaskController {
 	 * /tasks/{id}:
 	 *   get:
 	 *     summary: Get task by ID
+	 *     security:
+	 *       - BearerAuth: []
 	 *     tags: [Tasks]
 	 *     parameters:
 	 *       - in: path
@@ -114,6 +120,8 @@ export class TaskController {
 	 * /tasks/{id}:
 	 *   put:
 	 *     summary: Update task by ID
+	 *     security:
+	 *       - BearerAuth: []
 	 *     tags: [Tasks]
 	 *     parameters:
 	 *       - in: path
@@ -156,6 +164,8 @@ export class TaskController {
 	 * /tasks/{id}:
 	 *   delete:
 	 *     summary: Delete task by ID
+	 *     security:
+	 *       - BearerAuth: []
 	 *     tags: [Tasks]
 	 *     parameters:
 	 *       - in: path
@@ -267,5 +277,7 @@ export class TaskController {
 	 *         userId:
 	 *           type: string
 	 *           format: uuid
+	 *   security:
+	 *     - BearerAuth: []
 	 */
 }
