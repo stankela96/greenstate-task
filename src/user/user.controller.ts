@@ -95,6 +95,11 @@ export class UserController {
 	/**
 	 * @swagger
 	 * components:
+	 *   securitySchemes:
+	 *     BearerAuth:
+	 *       type: http
+	 *       scheme: bearer
+	 *       bearerFormat: JWT
 	 *   schemas:
 	 *     User:
 	 *       type: object

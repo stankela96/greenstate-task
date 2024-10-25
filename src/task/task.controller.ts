@@ -187,6 +187,11 @@ export class TaskController {
 	/**
 	 * @swagger
 	 * components:
+	 *   securitySchemes:
+	 *     BearerAuth:
+	 *       type: http
+	 *       scheme: bearer
+	 *       bearerFormat: JWT
 	 *   schemas:
 	 *     Task:
 	 *       type: object
