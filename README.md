@@ -1,4 +1,7 @@
 **Localhost:**<br>
+Everything is working.
+Tests are not implemented, neither is react.
+
 build:
 
 ```sh
