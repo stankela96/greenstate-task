@@ -5,12 +5,12 @@ const swaggerOptions: swaggerJSDoc.Options = {
 	definition: {
 		openapi: '3.0.0',
 		info: {
-			title: 'Your API Title',
+			title: 'Greenstate Backend Task',
 			version,
-			description: 'API documentation for your Express + TypeScript application',
+			description: 'API docs',
 			contact: {
-				name: 'Your Name',
-				email: 'your-email@example.com'
+				name: 'Stefan Stankovic',
+				email: 'stankovicstefan87@gmail.com'
 			}
 		},
 		servers: [
@@ -19,7 +19,7 @@ const swaggerOptions: swaggerJSDoc.Options = {
 			}
 		]
 	},
-	apis: ['./src/dto/*.ts', './src/**/*request.ts', './src/**/*controller.ts']
+	apis: ['./src/dto/*.ts', './src/**/*request.ts', './src/**/*controller.ts', './src/**/*.ts']
 };
 
 export const swaggerSpec = swaggerJSDoc(swaggerOptions);
