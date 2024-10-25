@@ -1,4 +1,4 @@
-import { PrismaClient, Task } from '@prisma/client';
+import { PrismaClient, Task, TaskPriority } from '@prisma/client';
 import { CreateTaskDto, UpdateTaskDto } from './dto/task.request';
 
 export class TaskService {
@@ -13,9 +13,12 @@ export class TaskService {
 		});
 	}
 
-	async getAll(userId: string): Promise<Task[]> {
+	async getAll(userId: string, priority?: TaskPriority): Promise<Task[]> {
 		return this.prisma.task.findMany({
-			where: { userId }
+			where: {
+				userId,
+				...(priority && { priority })
+			}
 		});
 	}
 

@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import routes from './routes/routes';
+import { swaggerSpec } from '././core/config/swagger';
+import swaggerUi from 'swagger-ui-express';
 
 import { HttpCode, ONE_HUNDRED, ONE_THOUSAND, SIXTY } from './core/constants';
 
@@ -39,8 +41,11 @@ export class Server {
 			});
 		});
 
+		this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 		this.app.listen(this.port, () => {
 			console.log(`Server running on port ${this.port}...`);
+			console.log(`\nSwagger docs available at http://localhost:${this.port}/api/docs`);
 		});
 	}
 }

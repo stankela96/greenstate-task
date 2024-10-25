@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { TaskService } from './task.service';
 import { CreateTaskDto, UpdateTaskDto } from './dto/task.request';
 import { CustomRequest } from '../middleware/types';
-import { Task } from '@prisma/client';
+import { Task, TaskPriority } from '@prisma/client';
 
 export class TaskController {
 	private readonly taskService = new TaskService();
@@ -17,10 +17,31 @@ export class TaskController {
 		return task;
 	}
 
+	/**
+	 * @swagger
+	 * /tasks:
+	 *   get:
+	 *     summary: Get all tasks
+	 *     tags: [Tasks]
+	 *     parameters:
+	 *       - in: query
+	 *         name: priority
+	 *         required: false
+	 *         description: Filter tasks by priority
+	 *         schema:
+	 *           type: string
+	 *           enum: [LOW, MEDIUM, HIGH]
+	 *     responses:
+	 *       200:
+	 *         description: A list of tasks
+	 *       400:
+	 *         description: Validation error
+	 */
 	async getAll(req: Request, res: Response): Promise<Task[]> {
 		const userId = (req as CustomRequest).userId;
+		const priority = req.query.priority as TaskPriority | undefined;
 
-		const tasks = await this.taskService.getAll(userId);
+		const tasks = await this.taskService.getAll(userId, priority);
 		res.send(tasks);
 
 		return tasks;
