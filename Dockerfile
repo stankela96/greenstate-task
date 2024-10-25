@@ -1,7 +1,5 @@
 FROM node:20-alpine AS build
 
-ENV PORT=3000
-
 WORKDIR /app
 
 COPY package*.json ./
