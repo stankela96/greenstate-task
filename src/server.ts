@@ -1,11 +1,12 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import routes from './routes/routes';
 import { swaggerSpec } from '././core/config/swagger';
 import swaggerUi from 'swagger-ui-express';
+import { errorHandler } from './middleware/error';
 
-import { HttpCode, ONE_HUNDRED, ONE_THOUSAND, SIXTY } from './core/constants';
+import { ONE_HUNDRED, ONE_THOUSAND, SIXTY } from './core/constants';
 
 interface ServerOptions {
 	port: number;
@@ -35,13 +36,9 @@ export class Server {
 			})
 		);
 
-		this.app.get('/', (_req: express.Request, res: express.Response) => {
-			return res.status(HttpCode.OK).send({
-				message: `Welcome to Initial API! \n Endpoints available at http://localhost:${this.port}/`
-			});
-		});
-
 		this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+		this.app.use(errorHandler);
 
 		this.app.listen(this.port, () => {
 			console.log(`Server running on port ${this.port}...`);

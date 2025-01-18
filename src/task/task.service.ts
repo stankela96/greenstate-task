@@ -1,6 +1,7 @@
 import { PrismaClient, TaskPriority } from '@prisma/client';
 import { CreateTaskDto, UpdateTaskDto } from './dto/task.request';
 import { OneTaskDto } from './dto/task.response';
+import { NotFoundError } from '../error-handler/error-handler';
 
 export class TaskService {
 	private prisma = new PrismaClient();
@@ -41,11 +42,11 @@ export class TaskService {
 		return this.prisma.task.delete({ where: { id, userId } });
 	}
 
-	private async checkTaskExistence(id: string, userId: string): Promise<OneTaskDto> {
+	async checkTaskExistence(id: string, userId: string): Promise<OneTaskDto> {
 		const task = await this.prisma.task.findUnique({ where: { id, userId } });
 
 		if (!task) {
-			throw new Error('Task not found.');
+			throw new NotFoundError('Task not found.');
 		}
 
 		return task;

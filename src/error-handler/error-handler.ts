@@ -1,4 +1,6 @@
-class HttpError extends Error {
+import { HttpCode } from '../core/constants';
+
+export class HttpError extends Error {
 	statusCode: number;
 
 	constructor(message: string, statusCode: number) {
@@ -8,20 +10,14 @@ class HttpError extends Error {
 	}
 }
 
-export class ConflictError extends HttpError {
-	constructor(message = 'Conflict') {
-		super(message, 409);
-	}
-}
-
 export class NotFoundError extends HttpError {
-	constructor(message = 'Not Found') {
-		super(message, 404);
+	constructor(message = 'Not Found.') {
+		super(message, HttpCode.NOT_FOUND);
 	}
 }
 
-export class UnauthorizedError extends HttpError {
-	constructor(message = 'Unauthorized') {
-		super(message, 401);
+export class BadRequestError extends HttpError {
+	constructor(message = 'Bad Request.') {
+		super(message, HttpCode.BAD_REQUEST);
 	}
 }

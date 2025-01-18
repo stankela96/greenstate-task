@@ -19,7 +19,7 @@ const swaggerOptions: swaggerJSDoc.Options = {
 			}
 		]
 	},
-	apis: ['./src/dto/*.ts', './src/**/*request.ts', './src/**/*controller.ts', './src/**/*.ts']
+	apis: ['./src/dto/*.ts', './src/**/*request.ts', './src/**/*controller.ts', './src/**/*.ts', './src/**/*response.ts']
 };
 
 export const swaggerSpec = swaggerJSDoc(swaggerOptions);
