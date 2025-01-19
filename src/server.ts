@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Application } from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import routes from './routes/routes';
@@ -44,5 +44,9 @@ export class Server {
 			console.log(`Server running on port ${this.port}...`);
 			console.log(`\nSwagger docs available at http://localhost:${this.port}/api/docs`);
 		});
+	}
+
+	public getApp(): Application {
+		return this.app;
 	}
 }
