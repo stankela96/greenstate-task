@@ -20,6 +20,7 @@ Tests can be executed with `yarn test` after the app is up and running.
 
 **Docker:**<br>
 Docker compose: `docker-compose up --build`
+Not complete since i wasn't able to resolve open-ssl problem on my machine.
 
 **API Docs**<br>
 Since it's not possible to auto-generate swagger docs,
