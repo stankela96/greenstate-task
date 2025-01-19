@@ -1,6 +1,6 @@
 **Localhost:**<br>
 Everything is working.
-Tests are not implemented, neither is react.<br>
+Tests are implemented for one route with two scenarios, in a bit of unconventional way.<br>
 Make sure to create `.env` file based on `.env.template`<br>
 Run `yarn` to have everything installed.<br>
 Create empty database on your local machine.<br>
@@ -15,6 +15,13 @@ start: `yarn start`<br>
 
 You can start by registering, logging in, and then trying the Task routes.
 
+**Tests:**<br>
+Tests can be executed with `yarn test` after the app is up and running.
+
 **Docker:**<br>
-Command bellow is working, but i didn't manage to make swagger work with it.<br>
 Docker compose: `docker-compose up --build`
+
+**API Docs**<br>
+Since it's not possible to auto-generate swagger docs,
+and writing comments manually is a bit unacceptable.
+I'll share a postman collection together with this task.
